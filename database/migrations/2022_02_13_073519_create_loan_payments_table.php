@@ -19,10 +19,10 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained();
             $table->string('installment_no');
             $table->date('due_date')->nullable();
-            $table->double('installment_amount');
-            $table->double('previous_outstanding')->nullable();
-            $table->double('total_recievable');
-            $table->double('amount_received')->nullable();
+            $table->double('installment_amount', 10, 2);
+            $table->double('previous_outstanding', 10, 2)->nullable();
+            $table->double('total_recievable', 10, 2);
+            $table->double('amount_received', 10, 2)->nullable();
             $table->dateTime('payment_date')->nullable();
             $table->boolean('penalty')->default(0);
             $table->boolean('active')->default(1);

@@ -16,8 +16,9 @@ return new class extends Migration
         Schema::create('loans', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained();
-            $table->double('loan_amount');
-            $table->double('spent')->nullable();
+            $table->double('loan_amount', 10, 2);
+            $table->mediumText('loan_terms');
+            $table->double('spent', 10, 2)->nullable();
             $table->boolean('active')->default(1);
             $table->timestamps();
         });

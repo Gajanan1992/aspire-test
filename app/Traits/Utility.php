@@ -10,9 +10,8 @@ trait Utility
     {
         $today = Carbon::today();
         $emiDates = [];
-        $noOfEMI = config('loan.no_of_emi');
 
-        for ($i = 0; $i < $noOfEMI; $i++) {
+        for ($i = 0; $i < 4; $i++) {
             $today = $today->addDays(7);
             $emiDates[] = $today->format('Y-m-d');
         }

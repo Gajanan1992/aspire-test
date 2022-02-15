@@ -28,7 +28,8 @@ class LoanController extends ApiController
             //dummy loan approval for ex - 5000.00
             $user->loan()->create([
                 'loan_amount' => 5000,
-                'spent' => 0
+                'spent' => 0,
+                'loan_terms' => 'Weekly due date'
             ]);
 
             $response = [
@@ -96,7 +97,6 @@ class LoanController extends ApiController
             $installmentAmount = $loanTransaction->amount / 4;
 
             $emiDates = $this->getEmiDates();
-
             foreach ($emiDates as $key => $value) {
                 $loanPayments = LoanPayments::create([
                     'loan_transaction_id' => $loanTransaction->id,
@@ -135,7 +135,8 @@ class LoanController extends ApiController
         return [
             'available' => $loan->loan_amount - $loan->spent,
             'credit limit' => $loan->loan_amount,
-            'spent' => $loan->spent
+            'spent' => $loan->spent,
+            'loan_terms' => $loan->loan_terms
         ];
     }
 

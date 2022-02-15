@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('loan_id')->constrained();
             $table->string('item');
-            $table->double('amount');
+            $table->double('amount', 10, 2);
             $table->timestamps();
         });
     }
